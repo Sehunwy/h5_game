@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数据结构</title>
+
+</head>
+<body onload="start()">
+
+
+</body>
+
+<script src="Wolf.js"></script>
+<script src="Map.js"></script>
+<script src="GamePage.js"></script>
+<script src="MenuPage.js"></script>
+<script src="Game.js"></script>
+<script>
+
+    
+    function start() {
+        game =new Game();
+        game.init();
+
+        setInterval('game.run()',300);
+    }
+
+</script>
+</html>

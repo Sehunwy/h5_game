@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数据结构</title>
+
+</head>
+<body>
+
+
+</body>
+
+<script>
+
+    var gameWidth = 480;
+    var gameHeight = 750;
+
+    var game = document.createElement('div');
+    game.style.width=gameWidth+"px";
+    game.style.height=gameHeight+"px";
+    game.style.position="relative";
+    game.style.margin="auto";
+    document.body.appendChild(game);
+
+
+    //1,创建菜单页面
+    var menuPage = document.createElement('div');
+    //2,设置相关的参数
+    menuPage.style.width=gameWidth+"px";
+    menuPage.style.height=gameHeight+"px";
+    menuPage.style.position="absolute";
+    menuPage.style.background="#3f3f3f";
+    menuPage.innerHTML="游戏菜单";
+    menuPage.style.color="#ffffff";
+    game.appendChild(menuPage);
+
+    //创建开始按钮
+    var btnStart = document.createElement('button');
+    btnStart.innerHTML="开始游戏";
+    btnStart.style.width=gameWidth/3+"px";
+    btnStart.style.position="absolute";
+    btnStart.style.left=(gameWidth-gameWidth/3)/2+"px";
+    btnStart.onclick=function (ev) {
+        game.removeChild(menuPage)
+        //console.log(gamePage);
+        game.appendChild(gamePage);
+    }
+
+    menuPage.appendChild(btnStart);
+
+
+
+    //创建游戏开始页面
+    var gamePage = document.createElement('div');
+    //2,设置相关的参数
+    gamePage.style.width=gameWidth+"px";
+    gamePage.style.height=gameHeight+"px";
+    gamePage.style.position="absolute";
+    gamePage.style.background="#3f3f3f";
+    gamePage.innerHTML="游戏开始";
+    gamePage.style.color="#ffffff";
+    gamePage.style.textAlign="center";
+
+    //创建返回按钮
+    var btnBack = document.createElement('button');
+    btnBack.innerHTML="返回";
+    btnBack.style.width=gameWidth/6+"px";
+    btnBack.style.position="absolute";
+    btnBack.onclick=function (ev) {
+        game.removeChild(gamePage)
+
+        game.appendChild(menuPage);
+    }
+    gamePage.appendChild(btnBack);
+
+
+
+</script>
+</html>

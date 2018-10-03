@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>游戏地图</title>
+</head>
+<body>
+</body>
+<script>
+
+    function Game(gameWidth,gameHeight) {
+        //设置游戏宽度和高度
+        this.gameWidth = gameWidth;
+        this.gameHeight = gameHeight;
+        var game;
+        //创建时间视图
+        var timeView = new TimeView();
+        var initButton= new initButton();
+        this.init = function () {
+            //设置游戏盒子
+            game = document.createElement('div');
+            //设置宽度
+            game.style.width = this.gameWidth + "px";
+            game.style.height = this.gameHeight + "px";
+            //设置居中
+            game.style.margin = "auto";
+            //设置背景颜色
+            game.style.backgroundColor = "lightpink";
+
+            game.style.position = "relative";
+
+
+            //把游戏盒子添加到body
+            document.body.appendChild(game);
+            //创建游戏地图
+            var map = new Map(this.gameWidth, this.gameHeight);
+            //数据初始化
+            map.init(game);
+            timeView.init(game);
+            initButton.init(game);
+            timeView.onclick=function () {
+                alert("游戏结束！");
+            }
+
+        }
+        this.run = function () {
+            timeView.run();
+        }
+        // var initButton= new initButton(game);
+        // initButton.init();
+    }
+
+
+    //创建游戏盒子
+    var game = new Game(450,640);
+    //数据初始化
+    game.init();
+    //启动动画
+    setInterval('run()',100);
+
+
+
+
+    function run() {
+        game.run();
+    }
+
+    function Map(mapWidth,mapHeight) {
+        this.mapWidth=mapWidth;
+        this.mapHeight=mapHeight;
+        this.init=function (game) {
+            //创建游戏的地图
+            var map = document.createElement('img');
+            //设置图片
+            map.src="../img/game_bg.jpg";
+            //设置图片位置
+            map.style.position="absolute";
+            //设置大小
+            map.style.width=this.mapWidth+"px";
+            map.style.height=this.mapHeight+"px";
+            game.appendChild(map);
+        }
+    }
+    
+    function TimeView() {
+        var time;
+        var timeWidth = 270;
+
+        this.onclick=null;
+
+        this.init=function (game) {
+            //设置时间
+            time = document.createElement('img');
+            //设置图片的来源
+            time.src = "../img/progress.png";
+            time.style.position = "absolute";
+            time.style.left="88px";
+            time.style.top="88px";
+            //设置图片大小
+            timeWidth = 270;
+            time.style.width=timeWidth+"px";
+            time.style.height="22px";
+            //把图片添加到游戏盒子
+            game.appendChild(time);
+        }
+        var isOver = false;
+        this.run=function () {
+            if(isOver)
+                return;
+            if(timeWidth<5) {
+                //游戏结束
+                isOver=true;
+                time.style.display='none';
+                this.onclick();
+            }
+            timeWidth = timeWidth-4;
+            time.style.width=timeWidth+"px";
+        }
+        }
+
+    function initButton() {
+        this.init=function (game) {
+            //添加游戏按钮
+            var button = document.createElement('button');
+            //设置按钮的大小
+            button.style.width=gameWidth/3+"px";
+            button.style.height=gameHeight/6+"px";
+            //设置按钮内容
+            button.innerHTML="开始游戏";
+            button.style.position="absolute";
+
+            button.style.left=(gameWidth-gameWidth/3)/2+"px";
+            button.style.top=(gameHeight-gameHeight/6)/2+"px";
+            button.onclick=function () {
+                button.style.display="none";
+            }
+            game.appendChild(button);
+        }
+        }
+
+
+
+</script>
+</html>

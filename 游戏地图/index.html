@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>游戏地图</title>
+</head>
+<body>
+</body>
+<script>
+    //设置游戏盒子
+    var game = document.createElement('div');
+    //设置宽度
+    game.style.width=480+"px";
+    game.style.height=750+"px";
+    //设置居中
+    game.style.margin="auto";
+    //设置背景颜色
+    game.style.backgroundColor="lightpink";
+
+    game.style.position="relative";
+    //把游戏盒子添加到body
+    document.body.appendChild(game);
+    //创建游戏的地图
+    var map = document.createElement('img');
+    //设置图片
+    map.src="../img/game_bg.jpg";
+    //设置图片位置
+    map.style.position="absolute";
+    //设置大小
+    map.style.width=480+"px";
+    map.style.height=750+"px";
+
+    game.appendChild(map);
+</script>
+</html>
